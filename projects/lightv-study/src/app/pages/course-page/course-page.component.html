@@ -1,0 +1,85 @@
+<!-- Course Page Header -->
+<section class="course-header">
+	<div class="container">
+		<h1>Explore Our Courses</h1>
+		<p>Find the perfect course to advance your skills.</p>
+	</div>
+</section>
+
+<!-- Filter and Sort Section -->
+<section class="filters">
+	<div class="container">
+		<div class="filter-group">
+			<label for="category">Category:</label>
+			<select id="category">
+				<option value="all">All</option>
+				<option value="web-development">Web Development</option>
+				<option value="data-science">Data Science</option>
+				<option value="graphic-design">Graphic Design</option>
+				<option value="business">Business</option>
+			</select>
+		</div>
+		<div class="filter-group">
+			<label for="sort">Sort By:</label>
+			<select id="sort">
+				<option value="popularity">Popularity</option>
+				<option value="price-low-to-high">Price: Low to High</option>
+				<option value="price-high-to-low">Price: High to Low</option>
+				<option value="rating">Rating</option>
+			</select>
+		</div>
+	</div>
+</section>
+
+<!-- Course List Section -->
+<section class="course-list">
+	<div class="container">
+		<div class="course-grid">
+			<!-- Course Card 1 -->
+			<div class="course-card" data-category="web-development" data-price="49" data-rating="4.7">
+				<img src="https://via.placeholder.com/300x200" alt="Web Development">
+				<h3>Web Development</h3>
+				<p>Learn to build modern websites from scratch.</p>
+				<div class="course-meta">
+					<span class="price">$49</span>
+					<span class="rating">⭐ 4.7</span>
+				</div>
+			</div>
+
+			<!-- Course Card 2 -->
+			<div class="course-card" data-category="data-science" data-price="99" data-rating="4.5">
+				<img src="https://via.placeholder.com/300x200" alt="Data Science">
+				<h3>Data Science</h3>
+				<p>Explore the world of data and analytics.</p>
+				<div class="course-meta">
+					<span class="price">$99</span>
+					<span class="rating">⭐ 4.5</span>
+				</div>
+			</div>
+
+			<!-- Course Card 3 -->
+			<div class="course-card" data-category="graphic-design" data-price="79" data-rating="4.8">
+				<img src="https://via.placeholder.com/300x200" alt="Graphic Design">
+				<h3>Graphic Design</h3>
+				<p>Master design tools and create stunning visuals.</p>
+				<div class="course-meta">
+					<span class="price">$79</span>
+					<span class="rating">⭐ 4.8</span>
+				</div>
+			</div>
+
+			<!-- Course Card 4 -->
+			<div class="course-card" data-category="business" data-price="59" data-rating="4.6">
+				<img src="https://via.placeholder.com/300x200" alt="Business">
+				<h3>Business Fundamentals</h3>
+				<p>Learn the basics of business management.</p>
+				<div class="course-meta">
+					<span class="price">$59</span>
+					<span class="rating">⭐ 4.6</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<router-outlet />

@@ -1,0 +1,136 @@
+@use "styles/colors" as colors;
+@use "styles/mixins" as mixins;
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Navigation Bar
+.navbar {
+  background-color: colors.$primary-color;
+  padding: 1rem 0;
+
+  .logo {
+    color: colors.$white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    @include mixins.flex-center;
+    gap: 1.5rem;
+
+    li a {
+      color: colors.$white;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Course Page Header
+.course-header {
+  background: linear-gradient(
+    135deg,
+    colors.$primary-color,
+    colors.$secondary-color
+  );
+  padding: 4rem 0;
+  text-align: center;
+  color: colors.$white;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+// Filters Section
+.filters {
+  padding: 2rem 0;
+  background-color: colors.$light-color;
+
+  .filter-group {
+    margin-bottom: 1rem;
+
+    label {
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    select {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+// Course List Section
+.course-list {
+  padding: 4rem 0;
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+
+    .course-card {
+      background-color: colors.$white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin: 1rem;
+        color: colors.$primary-color;
+      }
+
+      p {
+        font-size: 1rem;
+        margin: 0 1rem 1rem;
+        color: #666;
+      }
+
+      .course-meta {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        background-color: colors.$light-color;
+
+        .price {
+          font-weight: bold;
+          color: colors.$primary-color;
+        }
+
+        .rating {
+          color: #666;
+        }
+      }
+    }
+  }
+}

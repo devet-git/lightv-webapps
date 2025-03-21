@@ -1,0 +1,131 @@
+@use "sass:color";
+@use "styles/colors" as *;
+
+// $primary-color: #8f87f1;
+// $secondary-color: #c68efd;
+// $accent-color: #e9a5f1;
+// $light-color: #fed2e2;
+// $text-color: #333;
+// $white: #ffffff;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Login Form Section
+.login {
+  padding: 4rem 0;
+  background-color: $light-color;
+
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: $primary-color;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    .btn {
+      width: 100%;
+      background-color: $accent-color;
+      color: $white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.adjust($accent-color, $lightness: -10%);
+      }
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+
+      span {
+        padding: 0 1rem;
+        background-color: $white;
+        color: #666;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+
+    .google-login {
+      background-color: $white;
+      color: $text-color;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      &:hover {
+        background-color: #f8f8f8;
+      }
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 1.5rem;
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
