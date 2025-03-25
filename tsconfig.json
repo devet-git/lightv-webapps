@@ -2,15 +2,18 @@
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
 	"compileOnSave": false,
-  "compilerOptions": {
-    "paths": {
-      "core": [
-        "./dist/core"
-      ],
-      "shared": [
-        "./dist/shared"
-      ]
-    },
+	"compilerOptions": {
+		"paths": {
+			"core": [
+				"./dist/core"
+			],
+			"shared": [
+				"./dist/shared"
+			],
+			"@lib/core": [
+				"./projects/core/src/public-api"
+			],
+		},
 		"outDir": "./dist/out-tsc",
 		"strict": true,
 		"noImplicitOverride": true,

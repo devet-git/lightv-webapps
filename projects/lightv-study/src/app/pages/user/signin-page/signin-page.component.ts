@@ -1,11 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiResponse, ApiService } from '@lib/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signin-page',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './signin-page.component.html',
-  styleUrl: './signin-page.component.scss'
+  styleUrl: './signin-page.component.scss',
 })
-export class SigninPageComponent {
+export class SigninPageComponent implements OnInit {
+  loginForm: FormGroup;
 
+  constructor(private apiService: ApiService, private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
+  ngOnInit(): void {}
+
+  onSigninFormSubmit(event: Event) {
+    event.preventDefault();
+
+    const { username, password } = this.loginForm.value;
+    this.apiService
+      .post<ApiResponse>('auth/signin', { username, password })
+      .subscribe((res) => {
+        console.log(res);
+        if (res.success) {
+        }
+      });
+  }
+
+  onSiginWithGoogle() {
+    document.location.href = 'http://localhost:3000/auth/signin/google';
+  }
 }

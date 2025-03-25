@@ -3,6 +3,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { NotfoundPageComponent } from './pages/notfound-page/notfound-page.component';
 import { SigninPageComponent } from './pages/user/signin-page/signin-page.component';
+import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 
 export const routes: Routes = [
   { path: '', title: 'Home | LightV Study', component: HomePageComponent },
@@ -21,6 +22,11 @@ export const routes: Routes = [
         component: SigninPageComponent,
       },
     ],
+  },
+  {
+    path: 'user/me',
+    title: 'Profile | LightV Study',
+    component: ProfilePageComponent,
   },
   {
     path: '**',
