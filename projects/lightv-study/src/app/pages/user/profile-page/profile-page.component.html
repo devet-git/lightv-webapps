@@ -1,0 +1,55 @@
+<form [formGroup]="profileForm" class="profile-form" (ngSubmit)="onSubmit()">
+  <p-iftalabel variant="on">
+    <input
+      pInputText
+      id="username"
+      formControlName="username"
+      autocomplete="off"
+    />
+    <label for="username">Username</label>
+  </p-iftalabel>
+  <p-iftalabel variant="on">
+    <input
+      pInputText
+      type="email"
+      id="email"
+      formControlName="email"
+      autocomplete="off"
+    />
+    <label for="email">Email</label>
+  </p-iftalabel>
+  <p-iftalabel variant="on">
+    <p-password
+      id="currentPassword"
+      formControlName="currentPassword"
+      [feedback]="false"
+      [toggleMask]="true"
+    />
+    <label for="currentPassword">Current Password</label>
+  </p-iftalabel>
+  <p-iftalabel variant="on">
+    <p-password
+      id="newPassword"
+      formControlName="newPassword"
+      type="text"
+      [toggleMask]="true"
+      styleClass="w-100"
+    />
+    <label for="newPassword">New Password</label>
+  </p-iftalabel>
+  <p-iftalabel variant="on">
+    <p-password
+      id="confirmNewPassword"
+      formControlName="confirmNewPassword"
+      [feedback]="false"
+      [toggleMask]="true"
+    />
+    <label for="confirmNewPassword">Confirm New Password</label>
+  </p-iftalabel>
+  <div class="card flex justify-center">
+    <button pButton severity="success">
+      <i class="pi pi-user-edit"></i>
+      <span pButtonLabel>Update Information</span>
+    </button>
+  </div>
+</form>

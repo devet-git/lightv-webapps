@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ToastService } from '@lib/shared';
 
 @Component({
   selector: 'app-signin-page',
@@ -17,7 +18,11 @@ import { CommonModule } from '@angular/common';
 export class SigninPageComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private apiService: ApiService, private fb: FormBuilder) {
+  constructor(
+    private apiService: ApiService,
+    private fb: FormBuilder,
+    private toastServer: ToastService
+  ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -34,6 +39,7 @@ export class SigninPageComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
         if (res.success) {
+          this.toastServer.success();
         }
       });
   }

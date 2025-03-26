@@ -1,11 +1,12 @@
 <nav class="navbar">
-	<div class="container">
-		<a href="#" class="logo">Lightv Study</a>
-		<ul class="nav-links">
-			<li><a routerLink="/">Home</a></li>
-			<li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>
-			<li><a routerLink="/user/login" routerLinkActive="active">Login</a></li>
-			<li><a routerLink="/user/me" routerLinkActive="active">My Account</a></li>
-		</ul>
-	</div>
+  <div class="container">
+    <a href="#" class="logo">Lightv Study</a>
+    <ul class="nav-links">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>
+      <li><a routerLink="/user/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/user/me" routerLinkActive="active">My Account</a></li>
+      <li><button (click)="onLogout()">Logout</button></li>
+    </ul>
+  </div>
 </nav>

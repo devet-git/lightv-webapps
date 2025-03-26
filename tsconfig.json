@@ -13,6 +13,9 @@
 			"@lib/core": [
 				"./projects/core/src/public-api"
 			],
+			"@lib/shared": [
+				"./projects/shared/src/public-api"
+			],
 		},
 		"outDir": "./dist/out-tsc",
 		"strict": true,

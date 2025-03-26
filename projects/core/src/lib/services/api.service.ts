@@ -13,22 +13,24 @@ export class ApiService {
     return this.http.get<T>(this.baseUrl + endpoint, {
       params,
       withCredentials: true,
-      // headers: {
-      //   Authorization:
-      //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJxdGhhbmciLCJzdWIiOjEsImlhdCI6MTc0Mjg5OTY5MywiZXhwIjoxNzQyOTAzMjkzfQ.5ChNygpYxLXcmWlxhhBt4HfmdtkJwlzITp7VSfekY-s',
-      // },
     });
   }
 
   post<T>(endpoint: string, body: any): Observable<T> {
-    return this.http.post<T>(this.baseUrl + endpoint, body);
+    return this.http.post<T>(this.baseUrl + endpoint, body, {
+      withCredentials: true,
+    });
   }
 
   put<T>(endpoint: string, body: any): Observable<T> {
-    return this.http.put<T>(this.baseUrl + endpoint, body);
+    return this.http.put<T>(this.baseUrl + endpoint, body, {
+      withCredentials: true,
+    });
   }
 
   delete<T>(endpoint: string): Observable<T> {
-    return this.http.delete<T>(this.baseUrl + endpoint);
+    return this.http.delete<T>(this.baseUrl + endpoint, {
+      withCredentials: true,
+    });
   }
 }

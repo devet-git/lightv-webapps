@@ -1,3 +1,4 @@
+import { ApiService } from '@lib/core';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -7,4 +8,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private apiService: ApiService) {}
+  onLogout() {
+    this.apiService.post('auth/signout', {}).subscribe((res) => {
+      console.log(res);
+    });
+  }
+}
