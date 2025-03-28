@@ -1,4 +1,4 @@
-import { ApiResponse, ApiService } from '@lib/core';
+import { AuthService } from '@lib/core';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -37,7 +37,7 @@ export class ProfilePageComponent implements OnInit {
   profileForm: FormGroup;
   value!: string;
   constructor(
-    private apiService: ApiService,
+    private authService: AuthService,
     private fb: FormBuilder,
     private toastService: ToastService
   ) {
@@ -63,7 +63,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.get<ApiResponse>('auth/current-user').subscribe((res) => {
+    this.authService.getCurrentUser().subscribe((res) => {
       if (res.success) {
         const { username, email } = res.data;
         this.profileForm.patchValue({ username, email });
@@ -73,8 +73,8 @@ export class ProfilePageComponent implements OnInit {
 
   onSubmit() {
     const { email, currentPassword, newPassword } = this.profileForm.value;
-    this.apiService
-      .put<ApiResponse>('auth/current-user', {
+    this.authService
+      .updateUserOwnInfo({
         email,
         currentPassword,
         newPassword,
@@ -82,14 +82,7 @@ export class ProfilePageComponent implements OnInit {
       .subscribe((res) => {
         if (res.success) {
           this.toastService.success({});
-          // this.messageService.add({
-          //   severity: 'success',
-          //   summary: 'Success',
-          //   detail: 'Update profile successfully',
-          //   life: 1000,
-          // });
         }
-        console.log(res);
       });
   }
 }

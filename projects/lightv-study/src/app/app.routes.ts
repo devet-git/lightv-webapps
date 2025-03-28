@@ -4,6 +4,7 @@ import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { NotfoundPageComponent } from './pages/notfound-page/notfound-page.component';
 import { SigninPageComponent } from './pages/user/signin-page/signin-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', title: 'Home | LightV Study', component: HomePageComponent },
@@ -15,11 +16,13 @@ export const routes: Routes = [
   {
     path: 'user',
     title: 'User | LightV Study',
+
     children: [
       {
         path: 'login',
         title: 'Login | LightV Study',
         component: SigninPageComponent,
+        // canActivate: [AuthGuard],
       },
     ],
   },

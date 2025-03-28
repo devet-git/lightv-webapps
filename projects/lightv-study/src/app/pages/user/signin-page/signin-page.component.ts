@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponse, ApiService } from '@lib/core';
+import { ApiResponse, ApiService, AuthService } from '@lib/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToastService } from '@lib/shared';
+import { GlobalStateManager } from '../../../global.state';
 
 @Component({
   selector: 'app-signin-page',
@@ -19,9 +20,10 @@ export class SigninPageComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(
-    private apiService: ApiService,
+    private authService: AuthService,
     private fb: FormBuilder,
-    private toastServer: ToastService
+    private toastServer: ToastService,
+    private globalState: GlobalStateManager
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -34,14 +36,12 @@ export class SigninPageComponent implements OnInit {
     event.preventDefault();
 
     const { username, password } = this.loginForm.value;
-    this.apiService
-      .post<ApiResponse>('auth/signin', { username, password })
-      .subscribe((res) => {
-        console.log(res);
-        if (res.success) {
-          this.toastServer.success();
-        }
-      });
+    this.authService.signin({ username, password }).subscribe((res) => {
+      if (res.success) {
+        this.toastServer.success();
+        this.globalState.update({ isSignedIn: true });
+      }
+    });
   }
 
   onSiginWithGoogle() {

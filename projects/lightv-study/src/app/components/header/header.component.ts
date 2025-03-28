@@ -1,6 +1,7 @@
-import { ApiService } from '@lib/core';
-import { Component } from '@angular/core';
+import { ApiService, AuthService } from '@lib/core';
+import { Component, computed } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GlobalStateManager } from '../../global.state';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private authService: AuthService,
+    private globalState: GlobalStateManager
+  ) {}
+  isSignedIn = computed(() => this.globalState.state().isSignedIn);
+
   onLogout() {
-    this.apiService.post('auth/signout', {}).subscribe((res) => {
-      console.log(res);
+    this.authService.signout().subscribe((res) => {
+      if (res.success) {
+        this.globalState.update({ isSignedIn: false });
+      }
     });
   }
 }
