@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { MessageService, ToastMessageOptions } from 'primeng/api';
 
 export interface ToastOptions
-  extends Omit<ToastMessageOptions, 'severity' | 'summary'> {}
+  extends Omit<ToastMessageOptions, 'severity' | 'summary'> {
+  type?: 'message' | 'confirm';
+}
 /**
  * import { MessageService } from 'primeng/api';
  * To use this service in app, let add MessageService to provider in app.config.ts file

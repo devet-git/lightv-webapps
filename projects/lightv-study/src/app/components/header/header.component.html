@@ -1,15 +1,19 @@
 <nav class="navbar">
   <div class="container">
-    <a href="#" class="logo">Lightv Study</a>
     <ul class="nav-links">
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>
-      @if (isSignedIn()) {
-      <li><a routerLink="/user/me" routerLinkActive="active">My Account</a></li>
-      <li><button (click)="onLogout()">Logout</button></li>
-      }@else {
-      <li><a routerLink="/user/login" routerLinkActive="active">Login</a></li>
-      }
     </ul>
+    <button
+      pButton
+      pRipple
+      severity="secondary"
+      rounded="true"
+      class="!mx-4 !mt-2"
+      pStyleClass="targetclass"
+      (click)="toggleMenu()"
+    >
+      <i class="pi pi-angle-right"></i>
+    </button>
   </div>
 </nav>

@@ -1,0 +1,13 @@
+@use "../styles/sizes";
+
+#app-wrapper {
+  display: flex;
+}
+#main {
+  flex: auto;
+  margin-right: 250px;
+  transition: margin-right 0.5s ease-in-out;
+}
+.menu-hide {
+  margin-right: 0 !important;
+}

@@ -1,7 +1,10 @@
-<app-header></app-header>
-
-<router-outlet />
-
-<app-footer></app-footer>
-<!-- <p-toast position="bottom-right" /> -->
-<lib-shared-toast></lib-shared-toast>
+<div id="app-wrapper">
+  <main id="main" [class.menu-hide]="!isShowUserMenu">
+    <app-header />
+    <router-outlet />
+    <app-footer />
+  </main>
+  <app-user-menu />
+</div>
+<!-- TOAST MESSAGE -->
+<lib-shared-toast />

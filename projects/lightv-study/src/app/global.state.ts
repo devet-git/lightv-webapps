@@ -12,11 +12,12 @@ export interface GlobalState {
   providedIn: 'root',
 })
 export class GlobalStateManager {
-  private _state = signal<GlobalState>({
+  private defaultState: GlobalState = {
     theme: 'light',
     currentUser: null,
     isSignedIn: false,
-  });
+  };
+  private _state = signal<GlobalState>(this.defaultState);
 
   constructor(private authService: AuthService) {
     this.loadState();
@@ -25,8 +26,6 @@ export class GlobalStateManager {
   private async loadState() {
     const res = await firstValueFrom(this.authService.getCurrentUser());
     if (res.success) {
-      console.log(res);
-
       this.update({ currentUser: res.data, isSignedIn: true });
     }
   }
@@ -41,10 +40,6 @@ export class GlobalStateManager {
   }
 
   reset() {
-    this._state.set({
-      theme: 'light',
-      currentUser: null,
-      isSignedIn: false,
-    });
+    this._state.set(this.defaultState);
   }
 }

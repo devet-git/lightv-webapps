@@ -1,4 +1,4 @@
-import { AuthService } from '@lib/core';
+import { AuthService, User } from '@lib/core';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -34,8 +34,9 @@ import { matchValuesValidator, ToastService } from '@lib/shared';
   styleUrl: './profile-page.component.scss',
 })
 export class ProfilePageComponent implements OnInit {
-  profileForm: FormGroup;
-  value!: string;
+  protected profileForm: FormGroup;
+  protected user: User | null = null;
+
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
@@ -65,7 +66,12 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe((res) => {
       if (res.success) {
-        const { username, email } = res.data;
+        this.user = res.data;
+        const { username, email } = this.user;
+
+        if (this.user.socialProfileProvider) {
+          this.profileForm.get('email')?.disable();
+        }
         this.profileForm.patchValue({ username, email });
       }
     });

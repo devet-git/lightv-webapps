@@ -1,0 +1,17 @@
+.user-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 250px;
+  box-shadow: 0 0 10px white;
+  border-left: 1px solid lightgray;
+  transition: transform 0.5s ease-in-out;
+  background-color: #fff;
+}
+
+.user-menu-hide {
+  transform: translateX(100%);
+  box-shadow: none;
+}

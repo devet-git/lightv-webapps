@@ -9,6 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { ToastService } from '@lib/shared';
 import { GlobalStateManager } from '../../../global.state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin-page',
@@ -23,7 +24,8 @@ export class SigninPageComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private toastServer: ToastService,
-    private globalState: GlobalStateManager
+    private globalState: GlobalStateManager,
+    private rotuer: Router
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -38,8 +40,9 @@ export class SigninPageComponent implements OnInit {
     const { username, password } = this.loginForm.value;
     this.authService.signin({ username, password }).subscribe((res) => {
       if (res.success) {
-        this.toastServer.success();
         this.globalState.update({ isSignedIn: true });
+        this.toastServer.success({ detail: 'Logged in' });
+        this.rotuer.navigate(['/']);
       }
     });
   }

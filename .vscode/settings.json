@@ -1,0 +1,16 @@
+{
+	"tailwindCSS.experimental.configFile": {
+		"projects/lightv-study/src/styles.scss": "projects/lightv-study/src/**/**"
+	},
+	"editor.quickSuggestions": {
+		"strings": "on",
+		"other": true,
+		"comments": false,
+		// "strings": true
+	},
+	"tailwindCSS.includeLanguages": {
+		"plaintext": "html",
+		"typescript": "html",
+		"angular-html": "html"
+	}
+}

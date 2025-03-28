@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { ApiResponse } from '@lib/core';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 export interface UpdateUserOwnInfo {
   email: 'string';
@@ -16,12 +17,13 @@ export interface Login {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
   signin(data: Login) {
     return this.apiService.post<ApiResponse<User>>('auth/signin', data);
   }
 
   signout() {
+    this.router.navigate(['/user/login']);
     return this.apiService.post<ApiResponse>('auth/signout', {});
   }
 

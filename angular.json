@@ -36,7 +36,7 @@
 						],
 						"stylePreprocessorOptions": {
 							"includePaths": [
-								"projects/lightv-study/src"
+								"projects/lightv-study/src/styles"
 							]
 						},
 						"scripts": []
