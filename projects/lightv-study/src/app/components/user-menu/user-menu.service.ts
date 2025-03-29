@@ -2,9 +2,10 @@ import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class UserMenuService {
-  isShow = signal(true);
+  private _isShow = signal(true);
+  isShow = this._isShow.asReadonly();
 
   toggle() {
-    this.isShow.update((prev) => !prev);
+    this._isShow.update((prev) => !prev);
   }
 }

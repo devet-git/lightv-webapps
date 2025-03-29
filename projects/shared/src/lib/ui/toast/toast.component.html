@@ -1,20 +1,31 @@
-<p-toast position="bottom-right" />
+<!-- Message -->
+<p-toast position="bottom-right" key="message" />
 
+<!-- Confirmation -->
 <div class="card flex justify-center">
-  <p-toast position="bottom-center" key="confirm" [baseZIndex]="5000">
+  <p-toast
+    position="bottom-center"
+    key="confirm"
+    [baseZIndex]="5000"
+    (onClose)="onCloseConfirm()"
+  >
     <ng-template let-message #message>
       <div class="flex flex-col items-start flex-auto gap-2">
         <div class="flex items-center gap-2">
-          <p-avatar
+          <!-- <p-avatar
             image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
             shape="circle"
-          />
-          <span class="font-bold">Amy Elsner</span>
+          /> -->
+          <span class="font-bold text-lg">{{ message.summary }}</span>
         </div>
-        <div class="font-medium text-lg my-4">{{ message.summary }}</div>
-        <p-button severity="success" size="small" label="Reply" />
+        <div class="font-medium text-md my-4">{{ message.detail }}</div>
+        <p-button
+          [severity]="confirmButton.severity"
+          size="small"
+          label="{{ confirmButton.label }}"
+          (onClick)="onConfirm()"
+        />
       </div>
     </ng-template>
   </p-toast>
-  <p-button label="View" />
 </div>

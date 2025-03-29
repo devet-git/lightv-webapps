@@ -87,7 +87,7 @@ export class ProfilePageComponent implements OnInit {
       })
       .subscribe((res) => {
         if (res.success) {
-          this.toastService.success({});
+          this.toastService.success();
         }
       });
   }

@@ -13,6 +13,7 @@ import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
+import { TooltipModule } from 'primeng/tooltip';
 import { GlobalStateManager } from '../../global.state';
 import { Router } from '@angular/router';
 import { StyleClassModule } from 'primeng/styleclass';
@@ -29,6 +30,7 @@ import { ToastService } from '@lib/shared';
     AvatarModule,
     ButtonModule,
     StyleClassModule,
+    TooltipModule,
   ],
   templateUrl: './user-menu.component.html',
   styleUrl: './user-menu.component.scss',
@@ -44,9 +46,10 @@ export class UserMenuComponent implements OnInit {
     private userMenuService: UserMenuService,
     private toastService: ToastService
   ) {
+    //? Run when Global State update
     effect(() => {
+      // this.cdr.detectChanges();
       this.updateMenuItem();
-      this.cdr.detectChanges();
     });
   }
 
@@ -112,16 +115,23 @@ export class UserMenuComponent implements OnInit {
   }
 
   onLogout() {
-    this.toastService.notice({
-      detail: 'Are your sure?',
-      key: 'confirm',
-      sticky: true,
-    });
-    // this.authService.signout().subscribe((res) => {
-    //   if (res.success) {
-    //     this.globalState.update({ isSignedIn: false });
-    //   }
-    // });
+    this.toastService.success(
+      {
+        summary: 'Are you sure?',
+        detail: 'You will log out of the system',
+        key: 'confirm',
+        confirmButton: {
+          label: 'Logout',
+        },
+      },
+      () => {
+        this.authService.signout().subscribe((res) => {
+          if (res.success) {
+            this.globalState.update({ isSignedIn: false });
+          }
+        });
+      }
+    );
   }
 
   navigateToLogin() {

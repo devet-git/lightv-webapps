@@ -11,10 +11,11 @@
         pRipple
         severity="secondary"
         rounded="true"
-        class="!mx-4 !mt-2"
+        class="toggle-menu-btn"
         (click)="toggleMenu()"
+        pTooltip="{{ isShow ? 'Close Menu' : 'Open Menu' }}"
       >
-        <i class="pi pi-angle-right"></i>
+        <i class="pi {{ isShow ? 'pi-angle-right' : 'pi-angle-left' }}"></i>
       </button>
     </ng-template>
     <ng-template #submenuheader let-item>
